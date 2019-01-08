@@ -1,0 +1,27 @@
+#footer{
+    height:50px;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    background:#eee;
+    ul{
+        display:flex;
+        height:50px;
+        justify-content: space-around;
+        border-bottom:1px solid #ccc;
+        i{
+            display: block;
+            height:25px;
+            line-height: 25px;
+            text-align: center;
+        }
+        a{
+            display: block;
+            text-decoration: none;           
+            text-align: center
+        }
+    }
+}
+.bgcolor{
+    color:green
+}
