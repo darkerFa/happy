@@ -1,5 +1,48 @@
 #detail{
-    img{
-        width: 100px;
+    #loop{
+        height:50px;
+        position: fixed;
+        top:0px;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+        background: white;
+        ul{
+            height:50px;
+            display: flex;
+            justify-content: space-around;
+            cursor: pointer;
+            li{
+                height:50px;
+                line-height: 50px;
+            }
+        }
     }
+    #box{
+        padding-top:50px;
+     #fic{
+
+        li{
+            height:160px;
+            display: flex;
+            border-bottom:1px solid red; 
+            img{
+                display: block;
+                // width: 100px;
+                height: 100px;
+                margin: 25px;
+            }
+            div{
+                margin:20px;
+                margin-left:0px;
+                button{
+                    height:30px;
+                    width: 30px;
+                    color:red;
+                    margin-left:30px;
+                    border:0px;
+                }
+            }
+        }
+    }
+} 
 }
