@@ -1,13 +1,23 @@
 #header{
     position: fixed;
-    height:50px;
+    height:40px;
     top: 0px;
     width: 100%;
     background: green;
+
+     li{list-style:none}
+     .one{
+            position:absolute;
+            font-size:14px;
+            left:11px;
+            top:9px;
+            color:white
+    }
+ 
         input{
             width: 70%;
-            height:30px;
-            margin-top:10px;
+            height:25px;
+            margin-top:5px;
             margin-left:20%;
             border-radius: 20px;
         }

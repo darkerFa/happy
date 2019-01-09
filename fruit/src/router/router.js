@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import {
-	HashRouter as Router,
-	Switch,
-	Route,
+    HashRouter as Router,
+    Switch,
+    Route,
   Redirect
 } from 'react-router-dom'
 import Footer from '../components/footer.js'
@@ -13,6 +13,7 @@ import Sort from '../views/sort'
 import Center from '../views/center'
 import Shopping from '../views/shopping'
 import store from '../store/store'
+
 class Routers extends Component {
     render() {
       return (

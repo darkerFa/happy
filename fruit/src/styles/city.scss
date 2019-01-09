@@ -1,0 +1,25 @@
+#city{
+	background:#f4f4f4;
+	p{
+		font-size:15px;
+        padding:20px;
+        padding-bottom:5px;
+	}
+   .one{
+   	 display:flex;
+   	 flex-wrap:wrap;
+   	 padding-left:30px;
+   	 
+   	li{
+        margin-left:10px;
+   	    margin-right:10px;
+   	    margin-bottom:10px;
+
+   	  .vip{
+   	     background:white;
+   	     color:black;
+   	      border:1px #d0d0d0 solid;
+   	 }  
+   	}
+   }
+}
