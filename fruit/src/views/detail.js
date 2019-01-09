@@ -2,32 +2,34 @@ import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import axios from 'axios'
 import '../styles/detail.scss'
+import {getnew} from './something/target.js'
 class Detail extends Component{
     constructor (props){
         super(props)
         this.state={
-            looplist:[]
+            looplist:[],
+            count:4,
         }
     }
     componentDidMount(){
-        axios({
-            url:'https://b2capigateway.yiguo.com/api/commodityapi/Commodity/GetSearchList',
-            method:'post',
-            headers:{
-                'appName': 3000025,
-            },
-            data:{"Head":{"Token":"","LoginToken":"","CityId":`${this.props.match.params.id}`,"CityCode":"2","DistrictId":"751b5b8e-c1f7-4785-abeb-507b460f01ab","DeviceId":"34dc1400de48673cddd22a83a24c69e2","MobileOS":"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"},"Body":{"Keyword":"","CategoryId":`${this.props.match.params.id}`,"CategoryCode":"","PageIndex":1,"Sort":4}}
-        }).then(res=>{
-            console.log(res.data.Data.CommodityList)
+        getnew(this.props.match.params.id,this.state.count).then(res=>{
             this.setState({
-                looplist:res.data.Data.CommodityList
+                looplist:res
             })
         })
     }
+
     render() {
-       
+
       return (
         <div id="detail">
+            <div>
+                <ul>
+                    <li>销量</li>
+                    <li onClick={this.changplus.bind(this,5)}>新品</li>
+                    <li>价格</li>
+                </ul>
+            </div>
             <ul>
                 {
                     this.state.looplist.map((item,index)=>
@@ -39,6 +41,14 @@ class Detail extends Component{
             </ul>
         </div>
       )
+    }
+
+     
+    changplus(el){
+        console.log(el)
+        this.setState({
+            count:el
+        })
     }
 }
 

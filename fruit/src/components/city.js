@@ -52,9 +52,9 @@ class City extends Component{
 
          }).then(res=>{
          	// console.log('ABC地址',res.data.Data.HotCityList[0].CityList)
-         	this.setState({
-         		looplist:res.data.Data.HotCityList[0].CityList
-         	})
+         	// this.setState({
+         	// 	looplist:res.data.Data.HotCityList[0].CityList
+         	// })
          	
          })
 	}

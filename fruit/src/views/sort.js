@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
-import gettarget from './something/target.js'
+import {gettarget} from './something/target.js'
 import '../styles/sort.scss'
 
 class Sort extends Component{
@@ -33,7 +33,7 @@ class Sort extends Component{
                     {
                       this.state.looplist.map((item,index)=>
                         <li key={item.CategoryId} onClick={this.handleclick.bind(this,item.Childs,index)}  ref={(el)=>this.list[index]=el}
-                        className={this.state.count===index?'active':''}>
+                        className={this.state.count===index?'act':''}>
                             {item.CategoryName}
                         </li>
                       )
