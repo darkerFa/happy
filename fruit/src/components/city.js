@@ -2,6 +2,8 @@ import React,{Component} from 'react'
 import axios from 'axios';
 import '../styles/city.scss'
 import { Drawer, Button, Radio } from 'antd';
+import store from '../store/store.js'
+import {NavLink} from 'react-router-dom'
 const RadioGroup = Radio.Group;
 
 
@@ -11,11 +13,14 @@ class City extends Component{
 		super(props);
 		this.state = {
 		   looplist:[],
+       abclist:[],
 		   datalist:[],
            didian:'',
            visible: false,
            placement: 'bottom',
-           AreaName:''
+           AreaName:'',
+           cbname:'',
+          
  
 		}
 		
@@ -54,7 +59,35 @@ class City extends Component{
     this.setState({
       placement: e.target.value,
     })
+
 }
+    cb = (name)=>{
+      console.log(name)
+      this.setState({
+        cbname:name
+      })
+     store.dispatch({
+       type:"cd_name",
+       payload:name
+     })
+    }
+
+   componentDidMount(){
+    console.log('加载渲染完成阶段')
+    store.dispatch({
+     type:"hidetabbar",
+     payload:false
+    })
+      
+  }
+
+  componentWillUnmount(){
+    store.dispatch({
+     type:"showtabbar",
+     payload:true
+    })
+       
+  }
 
 	componentWillMount(){
          axios({
@@ -69,7 +102,8 @@ class City extends Component{
          }).then(res=>{
          	// console.log('ABC地址',res.data.Data.HotCityList[0].CityList)
          	this.setState({
-         		looplist:res.data.Data.HotCityList[0].CityList
+         		looplist:res.data.Data.HotCityList[0].CityList,
+            abclist:res.data.Data.CityList
          	})
          	
          })
@@ -98,17 +132,45 @@ class City extends Component{
           		)
           }
 		 </ul>
+     <ul className="two">
+          {
+            this.state.abclist.map((item,index)=>
+                 <li key={index} className="two_a">
+
+           <p>{item.FirstLetter}</p>
+            {
+              item.CityList.map(data=>
+                <div key={data.AreaId} >
+        <RadioGroup      
+          style={{ marginRight: 8 }}
+          defaultValue={this.state.placement}
+          onChange={this.onChange}
+        >  
+        </RadioGroup>
+        <Button className="vip" type="primary" className="two_b" onClick={this.showDrawer.bind(this,data.AreaId,data.AreaName)}>
+         {data.AreaName}
+        </Button>
+                </div>
+                )
+            }
+        
+                 </li>
+              )
+          }
+     </ul>
 		 <Drawer
           title={this.state.AreaName}
           placement={this.state.placement}
           closable={false}
           onClose={this.onClose}
           visible={this.state.visible}
+          className={'cd'}
           height ={356}
         >
        {
         this.state.datalist.map(item=>
-            <p id="ct" key={item.AreaId}>{item.AreaName}</p>
+            <p key={item.AreaId} onClick={this.cb.bind(this,item.AreaName)}>
+            <NavLink to='/home' replace>{item.AreaName}</NavLink></p>
           )
        }
 

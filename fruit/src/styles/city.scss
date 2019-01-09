@@ -23,5 +23,32 @@
    	 }  
    	}
    }
-   #ct{background:red;}
+   
+
+
+   .two{
+       width:100%;
+      
+      .two_a{
+        width:100%;
+        background:white;
+        margin-bottom:10px;
+        display:flex;
+         flex-wrap:wrap;
+        div{ padding-left:5px;}
+        p{background:#f4f4f4;display:block;width:100%;font-weight:700;color:darkblue;}
+             .two_b{
+              background:white;
+              color:black;
+              border:1px solid white;
+              margin-left:10px;
+              margin-right:10px;
+              margin-bottom:5px;
+             }
+      }
+}
+
+
+
+
 }

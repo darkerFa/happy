@@ -5,11 +5,30 @@ import {
     NavLink
 }from 'react-router-dom'
 import '../styles/footer.scss'
+import store from '../store/store.js'
 class Footer extends Component{
+    constructor(props){
+    super(props);
+    this.state = {
+         isShow:true
+    }
+} 
+     componentDidMount(){
+        store.subscribe(()=>{
+                console.log('store修改了',store.getState());
+
+                this.setState({
+                        isShow:store.getState().tabbar
+                })
+        })
+    }
+  
+
     render() {
       return (
         <div id="footer">
-            
+            {
+                this.state.isShow?
             <ul>
                 <li>     
                     <NavLink activeClassName="bgcolor" to='/home' replace>
@@ -34,6 +53,8 @@ class Footer extends Component{
                     <i className="iconfont icon-account"></i>个人</NavLink>
                 </li>
             </ul>
+            :null
+            }
         </div>
       )
     }
