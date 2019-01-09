@@ -1,44 +1,152 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
 import axios from 'axios'
+import { PullToRefresh } from 'antd-mobile';
 import '../styles/detail.scss'
+import {getnew} from './something/target.js'
+import ReactDOM from "react-dom";
 class Detail extends Component{
     constructor (props){
         super(props)
         this.state={
-            looplist:[]
+            looplist:[],
+            count:4,
+            refreshing: false,
+            down: true,
+            height: document.documentElement.clientHeight,
+            data:[],
+            num:1,
+            isloading:true
         }
     }
     componentDidMount(){
-        axios({
-            url:'https://b2capigateway.yiguo.com/api/commodityapi/Commodity/GetSearchList',
-            method:'post',
-            headers:{
-                'appName': 3000025,
-            },
-            data:{"Head":{"Token":"","LoginToken":"","CityId":`${this.props.match.params.id}`,"CityCode":"2","DistrictId":"751b5b8e-c1f7-4785-abeb-507b460f01ab","DeviceId":"34dc1400de48673cddd22a83a24c69e2","MobileOS":"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"},"Body":{"Keyword":"","CategoryId":`${this.props.match.params.id}`,"CategoryCode":"","PageIndex":1,"Sort":4}}
-        }).then(res=>{
-            console.log(res.data.Data.CommodityList)
+        const hei = this.state.height - ReactDOM.findDOMNode(this.ptr).offsetTop;
+        getnew(this.props.match.params.id,this.state.count,this.state.num).then(res=>{
             this.setState({
-                looplist:res.data.Data.CommodityList
-            })
-        })
+                    height: hei,
+                   looplist:res
+               })
+               console.log(this.state.looplist)
+           }) 
     }
+    // componentDidMount() {
+    //     const hei = this.state.height - ReactDOM.findDOMNode(this.ptr).offsetTop;
+    //     setTimeout(() => this.setState({
+    //       height: hei,
+    //       data: ["1111","2222","3333"],
+    //     }), 0);
+    //   }
     render() {
-       
+        
       return (
         <div id="detail">
-            <ul>
+            <div id="loop">
+                <ul>
+                    <li onClick={this.changcount.bind(this,4)}>销量</li>
+                    <li onClick={this.changplus.bind(this,5)}>新品</li>
+                    <li onClick={this.changprice.bind(this,1)}>价格</li>
+                </ul>
+            </div>
+            {/* <ul id="fic">
                 {
                     this.state.looplist.map((item,index)=>
-                        <li key={item.CommodityId}>
-                            <img src={item.SmallPic}/>{item.CommodityName}
+                        <li key={item.CommodityId} >
+                            <img src={item.SmallPic}/>
+                            <div>{item.CommodityName}<br/>
+                                    {item.SubTitle}<br/>
+                                    {item.PromotionTag}<br/>
+                                    ￥{item.SellPrice}  {item.Spec}    <button>+</button>
+                                    </div>
                         </li>
                     )
                 }
-            </ul>
+            </ul> */}
+                                      
+            <div id="box">
+                                <PullToRefresh
+                                    damping={60}
+                                    ref={el => this.ptr = el}
+                                    style={{
+                                    height: this.state.height-100,
+                                    overflow: 'auto',
+                                    }}
+                                    indicator={this.state.down ? {} : { deactivate: '上拉可以刷新' }}
+                                    direction={this.state.up ? 'down' : 'up'}
+                                    refreshing={this.state.refreshing}
+                                    onRefresh={() => {
+                                      
+                                    this.setState({ refreshing: true });
+
+                                    //axios...
+                                    // setTimeout(() => {
+                                    //     this.setState({ refreshing: false,
+                                    //         data:["kerwin","xiaoming",...this.state.data]
+                                    //     });
+                                    // }, 1000);
+                                    // if(this.state.looplist.length){
+                                    //     return 
+                                    // }
+                                        
+                                    if(this.state.isloading){
+                                        getnew(this.props.match.params.id,this.state.count,this.state.num+1).then(res=>{
+                                            this.setState({
+                                                   looplist:[...this.state.looplist,...res],
+                                                   num:this.state.num+1
+                                               })
+                                               if(res.length===0){
+                                                   this.setState({
+                                                       isloading:false
+                                                   })
+                                               }
+                                        })
+                                    }
+                                    }}
+                                >
+                        <ul id="fic">
+                                {
+                                    this.state.looplist.map((item,index)=>
+                                        <li key={item.CommodityId} >
+                                            <img src={item.SmallPic}/>
+                                            <div>{item.CommodityName}<br/>
+                                                    {item.SubTitle}<br/>
+                                                    {item.PromotionTag}<br/>
+                                                    ￥{item.SellPrice}  {item.Spec}    <button>+</button>
+                                                    </div>
+                                        </li>
+                                    )
+                                }
+                         </ul>
+                            </PullToRefresh>
+             </div>
         </div>
       )
+    }
+
+     
+    changplus(el){
+        getnew(this.props.match.params.id,this.state.count,this.state.num).then(res=>{
+            this.setState({
+                   looplist:res,
+                    count:el
+               })
+           })
+           
+    }
+    changcount(el){
+        getnew(this.props.match.params.id,el,this.state.num).then(res=>{
+            this.setState({
+                   looplist:res,
+                   count:el
+               })
+           })
+    }
+    changprice(el){
+        getnew(this.props.match.params.id,el,this.state.num).then(res=>{
+            this.setState({
+                   looplist:res,
+                   count:el
+               })
+         })
     }
 }
 
