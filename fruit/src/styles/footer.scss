@@ -3,12 +3,13 @@
     position: fixed;
     bottom: 0px;
     width: 100%;
-    background:#eee;
+   
     ul{
         display:flex;
         height:50px;
         justify-content: space-around;
         border-bottom:1px solid #ccc;
+         background:#eee;
         i{
             display: block;
             height:25px;

@@ -6,19 +6,23 @@
     background: green;
 
      li{list-style:none}
-     .one{
+     .one{  
+            width:60px;
             position:absolute;
             font-size:14px;
             left:11px;
             top:9px;
-            color:white
+            color:white;
+             overflow:hidden;
+             text-overflow:ellipsis;
+             white-space:nowrap
     }
  
         input{
             width: 70%;
             height:25px;
             margin-top:5px;
-            margin-left:20%;
+            margin-left:23%;
             border-radius: 20px;
         }
     
