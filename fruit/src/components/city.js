@@ -22,10 +22,26 @@ class City extends Component{
 }	
    
 
-  showDrawer = () => {
-    this.setState({
-      visible: true,
-    });
+  showDrawer = (id,name) => {
+    console.log(id)
+    axios({
+      url:'https://b2capigateway.yiguo.com/api/user/Area/GetDistrictList',
+          method:'post',
+            headers:{
+              'appName': 3000025,
+              'Content-Type': 'application/json; charset=utf-8'
+            },
+            data:{"Head":{"Token":"","LoginToken":"","DeviceId":"b03b87703a3d4f53485abfde4fd38e52"},"Body":{"CityId":`${id}`}}
+
+         }).then(res=>{
+          console.log('详细城市222',res.data.Data.DistrictList)
+          this.setState({
+             datalist:res.data.Data.DistrictList,
+              visible: true,
+              didian:id,
+             AreaName:name
+          })
+         })
   }
 
   onClose = () => {
@@ -59,63 +75,44 @@ class City extends Component{
          })
 	}
 
-	componentDidUpdate(){
-		axios({
-			url:'https://b2capigateway.yiguo.com/api/user/Area/GetDistrictList',
-         	method:'post',
-            headers:{
-            	'appName': 3000025,
-            	'Content-Type': 'application/json; charset=utf-8'
-            },
-            data:{"Head":{"Token":"","LoginToken":"","DeviceId":"b03b87703a3d4f53485abfde4fd38e52"},"Body":{"CityId":`${this.state.didian}`}}
-
-         }).then(res=>{
-         	console.log('详细城市',res)
-         	this.setState({
-         		datalist:res.data.Data
-         	})
-         })
-
-	}
-
 	render(){
 		return <div id="city">
 		 <p>热门城市</p>
 		 <ul className="one">
           {
           	this.state.looplist.map(item=>
-                 <li key={item.AreaId} onClick={()=>
-                     this.setState({
-                     	didian:item.AreaId,
-                     	AreaName:item.AreaName
-                     })
-                 }>
+                 <li key={item.AreaId}>
 
                  <RadioGroup
+                 
           style={{ marginRight: 8 }}
           defaultValue={this.state.placement}
           onChange={this.onChange}
         >  
         </RadioGroup>
-        <Button className="vip" type="primary" onClick={this.showDrawer}>
+        <Button className="vip" type="primary" onClick={this.showDrawer.bind(this,item.AreaId,item.AreaName)}>
          {item.AreaName}
         </Button>
-        <Drawer
-          title='选择城市'
-          placement={this.state.placement}
-          // closable={false}
-          onClose={this.onClose}
-          visible={this.state.visible}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Drawer>
+       
                  </li>
           		)
           }
 		 </ul>
-		
+		 <Drawer
+          title={this.state.AreaName}
+          placement={this.state.placement}
+          closable={false}
+          onClose={this.onClose}
+          visible={this.state.visible}
+          height ={356}
+        >
+       {
+        this.state.datalist.map(item=>
+            <p id="ct" key={item.AreaId}>{item.AreaName}</p>
+          )
+       }
+
+        </Drawer>
 		</div>
 	}
 }
