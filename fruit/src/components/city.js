@@ -28,7 +28,7 @@ class City extends Component{
    
 
   showDrawer = (id,name) => {
-    console.log(id)
+    // console.log(id)
     axios({
       url:'https://b2capigateway.yiguo.com/api/user/Area/GetDistrictList',
           method:'post',
@@ -39,7 +39,7 @@ class City extends Component{
             data:{"Head":{"Token":"","LoginToken":"","DeviceId":"b03b87703a3d4f53485abfde4fd38e52"},"Body":{"CityId":`${id}`}}
 
          }).then(res=>{
-          console.log('详细城市222',res.data.Data.DistrictList)
+          // console.log('详细城市222',res.data.Data.DistrictList)
           this.setState({
              datalist:res.data.Data.DistrictList,
               visible: true,
@@ -62,7 +62,7 @@ class City extends Component{
 
 }
     cb = (name)=>{
-      console.log(name)
+      // console.log(name)
       this.setState({
         cbname:name
       })
@@ -73,7 +73,7 @@ class City extends Component{
     }
 
    componentDidMount(){
-    console.log('加载渲染完成阶段')
+    // console.log('加载渲染完成阶段')
     store.dispatch({
      type:"hidetabbar",
      payload:false
