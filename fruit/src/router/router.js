@@ -13,6 +13,7 @@ import Sort from '../views/sort'
 import Center from '../views/center'
 import Shopping from '../views/shopping'
 import store from '../store/store'
+import Detail from '../views/detail'
 class Routers extends Component {
     render() {
       return (
@@ -26,6 +27,7 @@ class Routers extends Component {
                         <Route path='/eat' component={Eat}/>
                         <Route path='/shopping' component={Shopping}/>
                         <Route path='/center' component={Center}/>
+                        <Route path='/detail/:id' component={Detail}/>
                     </Switch>
                 </div>
             </Router>
