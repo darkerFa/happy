@@ -16,7 +16,7 @@ import store from '../store/store'
 import Detail from '../views/detail'
 import City from '../components/city.js'
 import Datalist from '../views/datalist.js'
-
+import Product from '../views/product.js'
 class Routers extends Component {
     render() {
       return (
@@ -32,6 +32,7 @@ class Routers extends Component {
                         <Route path='/center' component={Center}/>
                         <Route path='/detail/:id' component={Detail}/>
                         <Route path='/datalist/:wfx' component={Datalist}/>
+                        <Route path='/product/:dk' component={Product}/>
                         <Route path='/city' component={City}/>
                         <Redirect from="*" to='/home'/>
                     </Switch>

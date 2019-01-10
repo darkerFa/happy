@@ -43,6 +43,34 @@ function getnew(id,index,num){
     })
     }
 }
+
+function getdatalist(el){
+    return axios({
+        url:'https://b2capigateway.yiguo.com/api/commodityapi/Commodity/GetCommodityInfo',
+        method:'post',
+        headers:{
+            'appName': 3000025,
+        },
+        data:{"Head":{"Token":"","LoginToken":"","CityId":"eabbe02f-59e0-46e6-90e7-cd8a89dbb98f","CityCode":"2","DistrictId":"751b5b8e-c1f7-4785-abeb-507b460f01ab","DeviceId":"34dc1400de48673cddd22a83a24c69e2","MobileOS":"Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Mobile Safari/537.36"},"Body":{"CommodityCode":`${el}`,"CommodityId":""}}
+    }).then(res=>{
+        return res.data.Data
+    })
+
+}
+function getpicword(id){
+    return axios({
+        url:'https://b2capigateway.yiguo.com/api/commodityapi/Commodity/GetCommodityDetail',
+        method:'post',
+        headers:{
+            'appName': 3000025,
+        },
+        data:{"Head":{"Token":"","LoginToken":"","DeviceId":"34dc1400de48673cddd22a83a24c69e2"},"Body":{"CommodityId":`${id}`}}
+    }).then(res=>{
+        return res.data.Data
+    })
+}
 export  {
     gettarget,
-    getnew}
+    getnew,
+    getdatalist,
+    getpicword}

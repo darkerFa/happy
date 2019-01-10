@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 // import axios from 'axios'
 import { PullToRefresh } from 'antd-mobile';
 import '../styles/detail.scss'
-import {getnew,getSearch} from './something/target.js'
+import {getnew} from './something/target.js'
 import ReactDOM from "react-dom";
 import store from '../store/store.js'
 class Detail extends Component{
@@ -41,7 +41,6 @@ class Detail extends Component{
          type:"showtabbar",
          payload:true
         })
-           
       }
     render() {
         
