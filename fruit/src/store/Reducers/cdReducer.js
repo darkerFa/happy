@@ -1,5 +1,5 @@
 const cd = (prevstate=null,action)=>{
-    console.log('cd页',prevstate,action);
+    // console.log('cd页',prevstate,action);
 
     let {type,payload}=action;
     switch(type){

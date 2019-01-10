@@ -9,12 +9,12 @@ const RadioGroup = Radio.Group;
 
 
 class City extends Component{
-	constructor(props){
-		super(props);
-		this.state = {
-		   looplist:[],
+  constructor(props){
+    super(props);
+    this.state = {
+       looplist:[],
        abclist:[],
-		   datalist:[],
+       datalist:[],
            didian:'',
            visible: false,
            placement: 'bottom',
@@ -22,9 +22,9 @@ class City extends Component{
            cbname:'',
           
  
-		}
-		
-}	
+    }
+    
+} 
    
 
   showDrawer = (id,name) => {
@@ -89,31 +89,31 @@ class City extends Component{
        
   }
 
-	componentWillMount(){
+  componentWillMount(){
          axios({
-         	url:'https://b2capigateway.yiguo.com/api/user/Area/GetCityList',
-         	method:'post',
+          url:'https://b2capigateway.yiguo.com/api/user/Area/GetCityList',
+          method:'post',
             headers:{
-            	'appName': 3000025,
-            	'Content-Type': 'application/json; charset=utf-8'
+              'appName': 3000025,
+              'Content-Type': 'application/json; charset=utf-8'
             },
             data:{"Head":{"Token":"","LoginToken":"","DeviceId":"b03b87703a3d4f53485abfde4fd38e52"},"Body":{}}
 
          }).then(res=>{
-         	// console.log('ABC地址',res.data.Data.HotCityList[0].CityList)
-         	this.setState({
-         		looplist:res.data.Data.HotCityList[0].CityList,
+          // console.log('ABC地址',res.data.Data.HotCityList[0].CityList)
+          this.setState({
+            looplist:res.data.Data.HotCityList[0].CityList,
             abclist:res.data.Data.CityList
-         	})
+          })
          })
-	}
+  }
 
-	render(){
-		return <div id="city">
-		 <p>热门城市</p>
-		 <ul className="one">
+  render(){
+    return <div id="city">
+     <p>热门城市</p>
+     <ul className="one">
           {
-          	this.state.looplist.map(item=>
+            this.state.looplist.map(item=>
                  <li key={item.AreaId}>
 
                  <RadioGroup
@@ -128,9 +128,9 @@ class City extends Component{
         </Button>
        
                  </li>
-          		)
+              )
           }
-		 </ul>
+     </ul>
      <ul className="two">
           {
             this.state.abclist.map((item,index)=>
@@ -157,7 +157,7 @@ class City extends Component{
               )
           }
      </ul>
-		 <Drawer
+     <Drawer
           title={this.state.AreaName}
           placement={this.state.placement}
           closable={false}
@@ -174,8 +174,8 @@ class City extends Component{
        }
 
         </Drawer>
-		</div>
-	}
+    </div>
+  }
 }
 export default City;
 

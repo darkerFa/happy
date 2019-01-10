@@ -15,7 +15,7 @@ class Footer extends Component{
 } 
      componentDidMount(){
         store.subscribe(()=>{
-                console.log('store修改了',store.getState());
+                // console.log('store修改了',store.getState());
 
                 this.setState({
                         isShow:store.getState().tabbar

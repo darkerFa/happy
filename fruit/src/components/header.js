@@ -16,13 +16,13 @@ class Header extends Component{
     componentDidMount(){
     
 	if (store.getState().cd!==null) {
-		console.log(true)
-		console.log(store.getState().cd)
+		// console.log(true)
+		// console.log(store.getState().cd)
 		this.setState({
 			cdname:store.getState().cd
 		})
 	}else{
-		console.log(false)
+		// console.log(false)
 		this.setState({
 			cdName:this.state.cdname
 		})
