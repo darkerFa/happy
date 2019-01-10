@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types'
-import axios from 'axios'
+// import axios from 'axios'
 import { PullToRefresh } from 'antd-mobile';
 import '../styles/detail.scss'
-import {getnew} from './something/target.js'
+import {getnew,getSearch} from './something/target.js'
 import ReactDOM from "react-dom";
 import store from '../store/store.js'
 class Detail extends Component{
@@ -34,6 +34,7 @@ class Detail extends Component{
             type:"hidetabbar",
             payload:false
            })
+        console.log(this.props.match.params.id)
     }
       componentWillUnmount(){
         store.dispatch({
@@ -52,77 +53,52 @@ class Detail extends Component{
                     <li onClick={this.changplus.bind(this,5)}>新品</li>
                     <li onClick={this.changprice.bind(this,1)}>价格</li>
                 </ul>
-            </div>
-            {/* <ul id="fic">
-                {
-                    this.state.looplist.map((item,index)=>
-                        <li key={item.CommodityId} >
-                            <img src={item.SmallPic}/>
-                            <div>{item.CommodityName}<br/>
-                                    {item.SubTitle}<br/>
-                                    {item.PromotionTag}<br/>
-                                    ￥{item.SellPrice}  {item.Spec}    <button>+</button>
-                                    </div>
-                        </li>
-                    )
-                }
-            </ul> */}
-                                      
+            </div>                          
             <div id="box">
-                                <PullToRefresh
-                                    damping={60}
-                                    ref={el => this.ptr = el}
-                                    style={{
-                                    height: this.state.height-100,
-                                    overflow: 'auto',
-                                    }}
-                                    indicator={this.state.down ? {} : { deactivate: '上拉可以刷新' }}
-                                    direction={this.state.up ? 'down' : 'up'}
-                                    refreshing={this.state.refreshing}
-                                    onRefresh={() => {
-                                      
-                                    this.setState({ refreshing: true });
-
-                                    //axios...
-                                    // setTimeout(() => {
-                                    //     this.setState({ refreshing: false,
-                                    //         data:["kerwin","xiaoming",...this.state.data]
-                                    //     });
-                                    // }, 1000);
-                                    // if(this.state.looplist.length){
-                                    //     return 
-                                    // }
-                                        
-                                    if(this.state.isloading){
-                                        getnew(this.props.match.params.id,this.state.count,this.state.num+1).then(res=>{
-                                            this.setState({
-                                                   looplist:[...this.state.looplist,...res],
-                                                   num:this.state.num+1
-                                               })
-                                               if(res.length===0){
-                                                   this.setState({
-                                                       isloading:false
-                                                   })
-                                               }
+                    <PullToRefresh
+                        damping={60}
+                        ref={el => this.ptr = el}
+                        style={{
+                        height: this.state.height-100,
+                        overflow: 'auto',
+                        }}
+                        indicator={this.state.down ? {} : { deactivate: '上拉可以刷新' }}
+                        direction={this.state.up ? 'down' : 'up'}
+                        refreshing={this.state.refreshing}
+                        onRefresh={() => {
+                            
+                        this.setState({ refreshing: true });
+                            
+                        if(this.state.isloading){
+                            getnew(this.props.match.params.id,this.state.count,this.state.num+1).then(res=>{
+                                this.setState({
+                                        looplist:[...this.state.looplist,...res],
+                                        num:this.state.num+1
+                                    })
+                                    if(res.length===0){
+                                        this.setState({
+                                            isloading:false
                                         })
                                     }
-                                    }}
-                                >
-                        <ul id="fic">
-                                {
-                                    this.state.looplist.map((item,index)=>
-                                        <li key={item.CommodityId} >
-                                            <img src={item.SmallPic}/>
-                                            <div>{item.CommodityName}<br/>
-                                                    {item.SubTitle}<br/>
-                                                    {item.PromotionTag}<br/>
-                                                    ￥{item.SellPrice}  {item.Spec}    <button>+</button>
-                                                    </div>
-                                        </li>
-                                    )
-                                }
-                         </ul>
-                            </PullToRefresh>
+                            })
+                        }
+                        }}
+                    >
+            <ul id="fic">
+                    {
+                        this.state.looplist.map((item,index)=>
+                            <li key={item.CommodityId}  onClick={this.gotodatalist.bind(this,item.CommodityCode)}>
+                                <img src={item.SmallPic}/>
+                                <div>{item.CommodityName}<br/>
+                                        {item.SubTitle}<br/>
+                                        {item.PromotionTag}<br/>
+                                        ￥{item.SellPrice}  {item.Spec}    <button>+</button>
+                                        </div>
+                            </li>
+                        )
+                    }
+                </ul>
+                </PullToRefresh>
              </div>
         </div>
       )
@@ -130,7 +106,7 @@ class Detail extends Component{
 
      
     changplus(el){
-        getnew(this.props.match.params.id,this.state.count,this.state.num).then(res=>{
+        getnew(this.props.match.params.id,el,this.state.num).then(res=>{
             this.setState({
                    looplist:res,
                     count:el
@@ -153,6 +129,9 @@ class Detail extends Component{
                    count:el
                })
          })
+    }
+    gotodatalist(el){
+         this.props.history.push(`/datalist/${el}`)
     }
 }
 

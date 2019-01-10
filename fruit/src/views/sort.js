@@ -9,8 +9,9 @@ class Sort extends Component{
     this.state={
       looplist:[],
       list:[],
-      isShow:true,
-      count:0
+      isShow:false,
+      count:0,
+      num:[],
     }
     this.list=[]
   }
@@ -26,9 +27,15 @@ class Sort extends Component{
       return (
           <div id="nav">
                 <div className="search">
-                        <input type="text" placeholder="搜索"/> <span>搜索</span>
+                        <input type="text"  onFocus={this.setDark.bind(this)} ref='dark' onBlur={this.getDark.bind(this)}/> 
+                        <span onClick={this.getSearch.bind(this)}>搜索</span>
                 </div>
                 <div className="main">
+                   {
+                  this.state.isShow?
+                  <div className="dark1"></div>
+                  :''
+                   }
                   <ul className="leftlist">
                     {
                       this.state.looplist.map((item,index)=>
@@ -40,17 +47,33 @@ class Sort extends Component{
                     }
                   </ul>
                   <ul className="rightlist">
-                              { this.state.isShow?
+                              {
                                 this.state.list.map((el)=>
                                   <li key={el.CategoryId} onClick={this.goto.bind(this,el.CategoryId)}>
                                   <img src={el.PictureUrl}/>
                                   {el.CategoryName}</li>
-                                ):null        
+                                )       
                               }
                   </ul> 
                 </div>
           </div>
       )
+    }
+    setDark(){
+      
+      this.setState({
+        isShow:true
+      })
+    }
+    getDark(){
+      this.setState({
+        isShow:false
+      })
+    }
+    getSearch(){
+      console.log(this.refs.dark.value)
+      this.props.history.push(`detail/1${this.refs.dark.value}`)
+      
     }
     handleclick(ev,index){
       console.log(ev)
@@ -63,7 +86,7 @@ class Sort extends Component{
     goto(id){
       // `CatId=${el.CategoryId}&CatName=${el.CategoryName}`
       console.log(id)
-      this.props.history.push(`detail/${id}`)
+      this.props.history.push(`detail/0${id}`)
     }
 }
 
