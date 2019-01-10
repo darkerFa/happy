@@ -5,6 +5,7 @@ import { PullToRefresh } from 'antd-mobile';
 import '../styles/detail.scss'
 import {getnew} from './something/target.js'
 import ReactDOM from "react-dom";
+import store from '../store/store.js'
 class Detail extends Component{
     constructor (props){
         super(props)
@@ -28,14 +29,19 @@ class Detail extends Component{
                })
                console.log(this.state.looplist)
            }) 
+        //    console.log('加载渲染完成阶段')
+           store.dispatch({
+            type:"hidetabbar",
+            payload:false
+           })
     }
-    // componentDidMount() {
-    //     const hei = this.state.height - ReactDOM.findDOMNode(this.ptr).offsetTop;
-    //     setTimeout(() => this.setState({
-    //       height: hei,
-    //       data: ["1111","2222","3333"],
-    //     }), 0);
-    //   }
+      componentWillUnmount(){
+        store.dispatch({
+         type:"showtabbar",
+         payload:true
+        })
+           
+      }
     render() {
         
       return (
