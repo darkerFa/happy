@@ -1,0 +1,20 @@
+#nav{
+    .firstimg{width:100%}
+    .secondimg{width:100%}
+    .one{
+    	position:absolute;
+    	left:25px;
+    	top:340px;
+
+       .one_li{
+       	        width:80px;
+	    		float:left;
+	    		color:white;
+	    		font-size:12px;
+
+	    	.one_img{
+	    		width:60%;
+	    	}
+       }
+    }
+}

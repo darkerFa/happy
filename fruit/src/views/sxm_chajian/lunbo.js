@@ -15,7 +15,7 @@ class Lunbo extends Component{
 
   componentWillMount(){
      getLunbo().then(res=>{
-      console.log(res.templateComponentList[0].carouselPictures)
+      // console.log(res.templateComponentList[0].carouselPictures)
       this.setState({
         looplist:res.templateComponentList[0].carouselPictures
       })
