@@ -15,7 +15,7 @@ code {
 *{
   margin:0;
   padding:0;
-  touch-action: pan-y; 
+  /*touch-action: pan-y; */
 }
 ul li{
   list-style: none

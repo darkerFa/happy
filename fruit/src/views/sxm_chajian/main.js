@@ -1,9 +1,6 @@
 import React,{Component} from 'react';
 import '../sxm_css/main.scss'
 import {getLunbo} from '../sxm_cangku/lunbo_vip.js'
-import ReactSwipe from 'react-swipe';
-import Swiper from "swiper"
-import "swiper/dist/css/swiper.css"
 import { PullToRefresh, Button } from 'antd-mobile';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
@@ -48,7 +45,7 @@ class Main extends Component{
         ref={el => this.ptr = el}
         style={{
           height: this.state.height,
-          overflow: 'auto',
+          overflow: 'auto'
         }}
         direction={'up'}
         refreshing={this.state.refreshing}
@@ -79,8 +76,8 @@ class Main extends Component{
           this.state.data.map(item=>
                <li key={item.adPictures[0].adPictureId}>
                <a href={item.adPictures[0].hrefValue}><img src={item.adPictures[0].pictureUrl} className="bigimg" alt=""/></a>
-        <div className="swiper-container">
-            <div className="swiper-wrapper">
+        <div className="aaa">
+            <div className="bbb">
                {
                 item.commoditysComponentList.map(da=>
                            <div className="vip" key={da.commodityId}>

@@ -1,15 +1,24 @@
 #main{
+	position:relative;
 	background:white;
    li{list-style:none;}
 	
-			.swiper-container{
-				 width: 100%;
-				
-     			overflow-x:auto;
+			.aaa{
+				width:100%; 
+			
+
+
+			.bbb{
+     display:flex;
+    
+	  overflow:scroll;
+                
+     			
 
 				a{color:black;}
      			.vip{
-				display:flex;
+				
+
 			    .vip_ch{
 			      width:100px;
 			      height:200px;
@@ -41,6 +50,7 @@
 			.check{width:20px;background:#ccc;margin-left:10px;border-radius:3px;}
 
 		}
+			}	
 		
            
 			.bigimg{width:100%}
