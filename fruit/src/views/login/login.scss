@@ -1,0 +1,100 @@
+.login-page {
+	font-size: 16px;
+	margin-top: 30px;
+	.menu {
+		background: white;
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		form {
+			padding-left: 20px;
+			div {
+				width: 100%;
+				height: 60px;
+				border-bottom: 1px solid #ddd;
+				position: relative;
+				input {
+					width: 70%;
+					height: 100%;
+					border: 0;
+					position: absolute;
+					left: 30px;
+				}
+			}
+			div:nth-of-type(3) {
+				border: 0;
+			}
+			.icon-username {
+				width: 18px;
+				height: 20px;
+				background: url("//img07.yiguoimg.com/e/web/160104/02423/150313/icon_username.png") no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left:0;
+			}
+			.icon-password {
+				width: 18px;
+				height: 20px;
+				background: url("//img07.yiguoimg.com/e/web/160104/02423/150313/icon_password.png") no-repeat;
+				background-size: 100% 100%;
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				left:0;
+			}
+			.authImg {
+				height: 30px;
+				position: absolute;
+				right: 20px;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+		}
+	}
+	.affix {
+		.affix-up {
+			height: 50px;
+			line-height: 50px;
+			text-indent: 20px;
+			a {
+				color: #008842;
+			}
+		}
+
+		.affix-down {
+			margin-top: 40px;
+			input {
+				width: 150px;
+				height: 40px;
+				border: 1px solid #008842;
+				border-radius: 5px;
+				margin-left: 25px;
+
+			}
+			.login {
+				background: #008842;
+				color: white;
+			}
+			.register {
+				background: white;
+			}
+		}
+	}
+	.eg-logo {
+		width: 100%;
+		height: 54px;
+		position: absolute;
+		bottom: 30px;
+		span {
+			width: 104px;
+			height: 34px;
+			background: url("//img02.yiguo.com/e/web/150924/00982/140710/yiguo_logo.png") no-repeat;
+			background-size: 104px 34px;
+			display: block;
+			margin: 0 auto;
+		}
+		
+		
+	}
+}

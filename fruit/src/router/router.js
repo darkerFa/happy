@@ -17,6 +17,17 @@ import Detail from '../views/detail'
 import City from '../components/city.js'
 import Datalist from '../views/datalist.js'
 import Product from '../views/product.js'
+
+
+import Login from '../views/login/login';
+import Setting from '../views/setting/setting';
+import About from '../views/setting-details/about-us/about-us';
+import Aptitude from '../views/setting-details/aptitude/aptitude';
+import Privacyclause from '../views/setting-details/privacyclause/privacyclause';
+import Return from '../views/setting-details/return/return';
+import Service from '../views/setting-details/service/service';
+import Deliverynotes from '../views/setting-details/deliverynotes/deliverynotes';
+
 class Routers extends Component {
     render() {
       return (
@@ -34,6 +45,18 @@ class Routers extends Component {
                         <Route path='/datalist/:wfx' component={Datalist}/>
                         <Route path='/product/:dk' component={Product}/>
                         <Route path='/city' component={City}/>
+
+                        <Route path='/center' component={Center} />
+                        <Route path='/login' component={Login} />
+                        <Route path='/setting' component={Setting} />
+                        <Route path='/about' component={About} />
+                        <Route path='/aptitude' component={Aptitude} />
+                        <Route path='/privacyclause' component={Privacyclause} />
+                        <Route path='/return' component={Return} />
+                        <Route path='/service' component={Service} />
+                        <Route path='/deliverynotes' component={Deliverynotes} />
+
+
                         <Redirect from="*" to='/home'/>
                     </Switch>
                 </div>

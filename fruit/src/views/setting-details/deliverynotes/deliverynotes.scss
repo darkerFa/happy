@@ -1,0 +1,24 @@
+.deliverynotes {
+	li {
+		list-style-type: disc;
+		font-size: 16px;
+		color: #000;
+
+	}
+	.item {
+		width: 359px;
+		height: 386px;
+		margin: 10px;
+		background: #f8f8f8;
+		overflow: hidden;
+		.info {
+			margin: 27px;
+			h2 {
+				text-indent: -20px;
+				font-size: 16px;
+				color: #000;
+				font-weight: bold;
+			}
+		}
+	}
+}

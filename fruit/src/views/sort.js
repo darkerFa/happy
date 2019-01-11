@@ -17,7 +17,7 @@ class Sort extends Component{
   }
   componentDidMount(){
     gettarget().then(res=>{
-      console.log(res)
+      // console.log(res)
       this.setState({
         looplist:res
       })
@@ -76,7 +76,7 @@ class Sort extends Component{
       
     }
     handleclick(ev,index){
-      console.log(ev)
+      // console.log(ev)
       this.setState({
         list:ev,
         count:index
