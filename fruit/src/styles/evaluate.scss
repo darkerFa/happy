@@ -1,0 +1,56 @@
+#people{
+    #allpeo{
+      
+        h1{
+            height: 60px;
+            line-height: 60px;
+            background: #f60;
+            padding-left: 10px;
+            margin: 0px;
+            span{
+                float: right;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                margin-right: 10px;
+                color:red;
+            }
+        }
+        ul{
+            padding: 0px;
+            display: flex;
+            height: 40px;
+            justify-content: space-between;
+            border-bottom: 1px solid yellow;
+            li{
+                height:40px;
+                line-height: 40px;
+                text-align: center;
+                border-left:1px solid #ccc;
+                padding-left:20px;
+            }
+        }
+    }
+    .peo{
+        li{
+            height: 150px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid lightblue;
+            div{
+                img{
+                    width: 50px;
+                    height: 50px;
+                    display: block;
+                }
+                span{
+                    float: right;
+
+                }
+            }
+            p{
+                height: 40px;
+                margin-top:30px;
+            }
+        }
+    }
+}

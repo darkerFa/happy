@@ -58,7 +58,7 @@ class Detail extends Component{
                         damping={60}
                         ref={el => this.ptr = el}
                         style={{
-                        height: this.state.height-100,
+                        height: this.state.height-10,
                         overflow: 'auto',
                         }}
                         indicator={this.state.down ? {} : { deactivate: '上拉可以刷新' }}

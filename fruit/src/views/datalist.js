@@ -12,7 +12,9 @@ class Datalist extends Component{
         super(props)
         this.state={
             pics:[],
-            allList:''
+            allList:'',
+            num:1,
+            shopNum:0
         }
     }
     componentDidMount(){
@@ -71,7 +73,12 @@ class Datalist extends Component{
 
             <div className="norms">
                     <div className="what">规格<span></span><span></span></div>
-                    <div className="count">数量<span></span><span></span></div>
+                    <div className="count">
+                    <p>数量</p>
+                    <span onClick={this.minNum.bind(this)}>-</span>
+                    <span >{this.state.num} </span>
+                    <span onClick={this.plusNum.bind(this)}>+</span>
+                    </div>
             </div>
 
             <div className="address">
@@ -80,7 +87,8 @@ class Datalist extends Component{
                 </p>
             </div>
             <div className="evaluate">
-                <span>评价       查看全部》</span><br/>
+                <span onClick={this.chickto.bind(this,this.state.allList.CommodityId)}>评价       查看全部》</span><br/>
+                <h3>hello world</h3>
                 <h2 onClick={this.gotoProduct.bind(this,this.state.allList.CommodityId)}>查看图文详情</h2>
             </div>
             <div className="line-top">
@@ -90,12 +98,14 @@ class Datalist extends Component{
                              <i className="iconfont icon-all"></i><br/>首页
                          </NavLink>
                         </li>
-                        <li>
+                        <li className="showNum">
                         <NavLink activeClassName="bgcolor" to='/shopping' replace>
                         <i className="iconfont icon-cart"><br/></i>购物</NavLink>
+                        <div>{this.state.shopNum}</div>
                         </li>
                     </ul>
-                    <div>加入购物车</div>
+                    <div onClick={this.joinShop.bind(this)}>加入购物车</div>
+                    
             </div>
         </div>
       )
@@ -103,6 +113,29 @@ class Datalist extends Component{
 
     gotoProduct(id){
         this.props.history.push(`/product/${id}`)
+    }
+    chickto(el){
+        console.log('ssss')
+        this.props.history.push(`/evaluate/${el}`)
+    }
+    minNum(){
+        if(this.state.num === 1){
+            return this.state.num 
+        }else{
+            this.setState({
+                num:this.state.num-1
+            })
+        }
+    }
+    plusNum(){
+        this.setState({
+            num:this.state.num+1
+        })
+    }
+    joinShop(){
+        this.setState({
+            shopNum:this.state.num+this.state.shopNum
+        })
     }
 }
 

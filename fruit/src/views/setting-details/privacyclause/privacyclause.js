@@ -6,7 +6,7 @@ class Privacyclause extends Component {
 		return (
 			<div className="privacyclause">
 				<img src="https://front.yiguo.com/app-vip/img/agreement.jpg" alt="" />
-				<a href="javascript:;">下载协议</a>
+				<a href="#">下载协议</a>
 			</div>
 		);
 	}

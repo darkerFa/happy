@@ -26,9 +26,10 @@ class Footer extends Component{
 
     render() {
       return (
-        <div id="footer">
+        <div>
             {
                 this.state.isShow?
+           <div  id="footer">    
             <ul>
                 <li>     
                     <NavLink activeClassName="bgcolor" to='/home' replace>
@@ -53,6 +54,7 @@ class Footer extends Component{
                     <i className="iconfont icon-account"></i>个人</NavLink>
                 </li>
             </ul>
+        </div> 
             :null
             }
         </div>

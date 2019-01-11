@@ -17,8 +17,8 @@ import Detail from '../views/detail'
 import City from '../components/city.js'
 import Datalist from '../views/datalist.js'
 import Product from '../views/product.js'
-
-
+import Evaluate from '../views/evaluate.js'
+ 
 import Login from '../views/login/login';
 import Setting from '../views/setting/setting';
 import About from '../views/setting-details/about-us/about-us';
@@ -45,6 +45,9 @@ class Routers extends Component {
                         <Route path='/datalist/:wfx' component={Datalist}/>
                         <Route path='/product/:dk' component={Product}/>
                         <Route path='/city' component={City}/>
+                        <Route path='/evaluate/:ck' component={Evaluate}/>
+
+
 
                         <Route path='/center' component={Center} />
                         <Route path='/login' component={Login} />
