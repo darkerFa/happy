@@ -60,6 +60,7 @@ class Eat extends Component{
           }
           <p className="right-top">NEW</p>
           </ul>
+          <div>
          <PullToRefresh
         damping={60}
         ref={el => this.ptr = el}
@@ -120,6 +121,7 @@ class Eat extends Component{
           </ul>
           <p className="downdown">{this.state.gg}</p>
             </PullToRefresh>
+            </div>
         </div>
       )
     }
