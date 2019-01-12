@@ -1,0 +1,85 @@
+#eat{
+	background:#910c22;
+	margin-bottom:60px;
+	position:relative;
+   .downdown{color:white;width:100%;text-align:center;}
+	.right-top{
+					background:red;
+					position:absolute;
+					border-radius:5px;
+					right:68px;
+					top:5px;
+					color:white;
+				}
+	.one{
+		display:flex;
+		width:100%;
+		padding-top:10px;
+		padding-left:10px;
+		background:white;
+		
+		.one_icon{
+			width:20%;
+			img{
+				width:80%;
+				
+
+
+			}
+		}
+	}
+
+	.two{
+		// background:red;
+		padding-left:5px;
+		padding-right:5px;
+
+		.bigli{
+			background:white;
+		   margin-bottom:5px;
+			width:100%;
+			position:relative;
+			.bigimg{
+				width:100%;
+			}
+			.left_top{
+				position:absolute;
+				left:0;
+				top:10px;
+				background:orange;
+				border-radius:5px;
+			}
+			.num{
+				background:white;
+				opacity:0.8;
+				position:absolute;
+				border-radius:5px;
+				right:10px;
+				top:10px;
+				font-size:13px;
+			}
+		}
+       .bigp{
+       	font-size:20px;
+       }
+		.smallul{
+			position:relative;
+			.smallimg{
+				width:10%
+			}
+			.small_p1{
+			position:absolute;
+			top:0;
+			left:45px;
+			}
+
+			.small_p2{
+			position:absolute;
+			top:0;
+			right:0;
+			}
+
+		}
+
+	}
+}

@@ -44,7 +44,8 @@ class Header extends Component{
             		isShow:!this.state.isShow
             	})
             	// console.log(s)
-            	this.props.event(s)
+            	this.props.event(s);
+            	this.props.ccc.history.push(`/sort`);
         }
 }
 

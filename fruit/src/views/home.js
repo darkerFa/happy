@@ -8,6 +8,9 @@ import Header from '../components/header.js'
 import Lunbo from './sxm_chajian/lunbo.js'
 import Nav from './sxm_chajian/nav.js'
 import Main from './sxm_chajian/main.js'
+import { BackTop } from 'antd';
+
+
 
 class Home extends Component{
   constructor(props){
@@ -28,10 +31,17 @@ class Home extends Component{
              :null 
             
            }
-          <Header event={this.cb.bind(this)}/>
+          <Header event={this.cb.bind(this)} ccc={this.props}/>
           <Lunbo/>
           <Nav aaa={this.props}/>
           <Main bbb={this.props}/>
+
+
+              <div>
+                <BackTop />
+                <strong style={{ color: 'rgba(64, 64, 64, 0.6)' }}> </strong>
+              </div>
+             
         </div>
       )
     }

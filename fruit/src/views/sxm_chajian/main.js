@@ -21,11 +21,11 @@ class Main extends Component{
 
    componentWillMount(){
    	getLunbo().then(res=>{
-   		console.log(res.templateComponentList)
+   		// console.log(res.templateComponentList)
    		this.setState({
    			data:res.templateComponentList.splice(1,3)
    		})
-   		console.log(this.state.data)
+   		// console.log(this.state.data)
    	})
 
    }
