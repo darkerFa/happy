@@ -21,7 +21,7 @@ class Main extends Component{
 
    componentWillMount(){
    	getLunbo().then(res=>{
-   		// console.log(res.templateComponentList)
+   		console.log(res.templateComponentList)
    		this.setState({
    			data:res.templateComponentList.splice(1,3)
    		})
@@ -40,6 +40,7 @@ class Main extends Component{
 
 	render(){
 		return <div id="main">
+    <div>
       <PullToRefresh
         damping={60}
         ref={el => this.ptr = el}
@@ -56,26 +57,29 @@ class Main extends Component{
             method:'post',
             headers:{
               'appName': 3000025,
-              'Content-Type': 'application/json; charset=utf-8'
+              // 'Content-Type': 'application/json; charset=utf-8'
             },
-            data:{"head":{"version":"h5","cityCode":"8192","cityId":"dd7cbdb8-6463-436f-ba09-93c69150f137","districtId":"a872b70c-487c-4ebe-830b-bb0e1e341bc3","token":"","loginToken":""},"body":{"previewTime":"","operationType":1,"pageIndex":1,"homePageId":"55a2d0a1-98ab-43e9-90c8-825a54c6f06b","publishTime":"2019/01/11 11:25:11"}}
+            data:{"head":{"version":"h5","cityCode":"8192","cityId":"dd7cbdb8-6463-436f-ba09-93c69150f137","districtId":"a872b70c-487c-4ebe-830b-bb0e1e341bc3","token":"","loginToken":""},"body":{"previewTime":"","operationType":1,"pageIndex":1,"homePageId":"55a2d0a1-98ab-43e9-90c8-825a54c6f06b","publishTime":"2019/01/11 22:53:04"}}
           }).then(res=>{
             console.log('拉动加载的数据',res)
             this.setState({
-                datalist:res.data.Data.templateComponentList.splice(0,2)
+                datalist:res.data.Data.templateComponentList.splice(1,3)
             })
           })
           setTimeout(() => {
             this.setState({ refreshing: false,
-           data:[...this.state.data,...this.state.datalist]
+           data:[...this.state.data]
             });
           }, 1000);
         }}
       >
         {
-          this.state.data.map(item=>
-               <li key={item.adPictures[0].adPictureId}>
-               <a href={item.adPictures[0].hrefValue}><img src={item.adPictures[0].pictureUrl} className="bigimg" alt=""/></a>
+          this.state.data.map((item,index)=>
+               <li key={index}>
+               { item?
+                  <a href={item.adPictures[0].hrefValue}><img src={item.adPictures[0].pictureUrl} className="bigimg" alt=""/></a>
+                :''
+               }
         <div className="aaa">
             <div className="bbb">
                {
@@ -99,6 +103,7 @@ class Main extends Component{
               )
 }
       </PullToRefresh>
+      </div>
 
         {/* <ul className="one">
            {
