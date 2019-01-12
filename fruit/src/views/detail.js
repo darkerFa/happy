@@ -27,14 +27,14 @@ class Detail extends Component{
                     height: hei,
                    looplist:res
                })
-               console.log(this.state.looplist)
+            //    console.log(this.state.looplist)
            }) 
         //    console.log('加载渲染完成阶段')
            store.dispatch({
             type:"hidetabbar",
             payload:false
            })
-        console.log(this.props.match.params.id)
+        // console.log(this.props.match.params.id)
     }
       componentWillUnmount(){
         store.dispatch({

@@ -15,7 +15,7 @@ function gettarget(){
 }
 
 function getnew(id,index,num){
-    console.log(id[0])
+    // console.log(id[0])
     if(id[0] === '0'){
         id = id.slice(1)
     return axios({
@@ -81,9 +81,22 @@ function getevaluate(el){
         return res.data.Data.VoteList
     })
 }
+function getshop(){
+    return axios({
+        url:'https://b2capigateway.yiguo.com/api/shopcart/CartInfo/GetCartInfo',
+        method:'post',
+        headers:{
+            'appName': 3000025,
+        },
+        data:{"Head":{"Token":"","LoginToken":"","CityId":"312d0556-0671-4f2e-8bac-7b8873b5a03a","CityCode":"1","DistrictId":"825dbb3c-015a-4a19-a7be-a6bfe4aa0fe0","DeviceId":"b22393d841ee00903445d3e90a328fe4","MobileOS":"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1"},"Body":{"CouponId":""}}
+    }).then(res=>{
+        return res
+    })
+}
 export  {
     gettarget,
     getnew,
     getdatalist,
     getpicword,
-    getevaluate,}
+    getevaluate,
+    getshop,}

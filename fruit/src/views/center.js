@@ -110,7 +110,7 @@ class Center extends Component {
       url: 'https://b2capigateway.yiguo.com/api/user/User/GetUserInfo',
       data: { "Head": { "Token": "", "LoginToken": "", "CityId": "312d0556-0671-4f2e-8bac-7b8873b5a03a", "CityCode": "1", "DistrictId": "825dbb3c-015a-4a19-a7be-a6bfe4aa0fe0", "DeviceId": "eaa46c63779eca9129259b426dbdd13f", "MobileOS": "Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1" }, "Body": "" }
     }).then(res => {
-      console.log(res.data.Data.UserInfo.IconList);
+      // console.log(res.data.Data.UserInfo.IconList);
       this.setState({
         accountList: res.data.Data.UserInfo.BalanceAndCoupons,
         payList: res.data.Data.UserInfo.OrderIcons,

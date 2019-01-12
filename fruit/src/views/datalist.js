@@ -14,23 +14,26 @@ class Datalist extends Component{
             pics:[],
             allList:'',
             num:1,
-            shopNum:0
+            shopNum:0,
+            isTrue:false,
         }
     }
     componentDidMount(){
-        console.log(this.props.match.params.wfx)
+        // console.log(this.props.match.params.wfx)
         getdatalist(this.props.match.params.wfx).then(res=>{
             this.setState({
                 pics:res.CommodityInfo.Pictures,
                 allList:res.CommodityInfo
             })
-            console.log(res.CommodityInfo)
+            // console.log(res.CommodityInfo)
+            
         })
 
         store.dispatch({
             type:"hidetabbar",
             payload:false
            })
+        //    console.log(document.cookie.split(';')[1].split('=')[1])
     }
     componentWillUnmount(){
         store.dispatch({
@@ -115,7 +118,7 @@ class Datalist extends Component{
         this.props.history.push(`/product/${id}`)
     }
     chickto(el){
-        console.log('ssss')
+        // console.log('ssss')
         this.props.history.push(`/evaluate/${el}`)
     }
     minNum(){
@@ -133,10 +136,21 @@ class Datalist extends Component{
         })
     }
     joinShop(){
+        // var a = Array.from(document.cookie.split(';')[1].split('=')[1])
         this.setState({
-            shopNum:this.state.num+this.state.shopNum
+            shopNum:this.state.num+this.state.shopNum,
+            isTrue:true
+        },()=>{
+            if(this.state.isTrue){
+                document.cookie = `${this.state.allList.CommodityCode}=${this.state.shopNum}`;
+                // console.log(document.cookie.split(';')[1].split('=')[1])
+                document.cookie = `${this.state.allList.CommodityId}=${this.state.allList.CommodityCode}`
+            }
         })
+
+        
     }
+   
 }
 
 export default Datalist 
