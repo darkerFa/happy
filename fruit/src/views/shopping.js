@@ -27,7 +27,7 @@ class Shopping extends Component{
             
             if(res){
               aaa.push(res.CommodityInfo)  
-              // console.log(aaa)
+              console.log(aaa)
               this.setState({
                 list:aaa,
                 isshop:true
