@@ -36,7 +36,7 @@ class Routers extends Component {
                 <div>
                     <Footer/>
                     <Switch>
-                        <Route path='/home' component={Home}/>
+                           <Route path='/home' component={Home}/>
                         <Route path='/sort' component={Sort}/>
                         <Route path='/eat' component={Eat}/>
                         <Route path='/shopping' component={Shopping}/>
